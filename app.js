@@ -292,6 +292,113 @@ const CATALOG = {
     'apple one':    { domain: 'apple.com',      color: '#555555', name: 'Apple One',     category: 'other' },
 };
 
+
+// ========== PRESET PRICES ==========
+// Known subscriptions use these embedded prices immediately and are NOT searched online.
+// Internet lookup is only used for an unknown service that is not in CATALOG.
+const PRESET_PRICES = {
+    'netflix': { price: 15.49, period: 'monthly' },
+    'youtube premium': { price: 13.99, period: 'monthly' },
+    'youtube music': { price: 10.99, period: 'monthly' },
+    'disney+': { price: 9.99, period: 'monthly' },
+    'hbo max': { price: 9.99, period: 'monthly' },
+    'hulu': { price: 9.99, period: 'monthly' },
+    'crunchyroll': { price: 7.99, period: 'monthly' },
+    'apple tv': { price: 9.99, period: 'monthly' },
+    'amazon prime': { price: 14.99, period: 'monthly' },
+    'spotify premium': { price: 11.99, period: 'monthly' },
+    'apple music': { price: 10.99, period: 'monthly' },
+    'soundcloud go': { price: 9.99, period: 'monthly' },
+    'deezer': { price: 11.99, period: 'monthly' },
+    'tidal': { price: 10.99, period: 'monthly' },
+    'notion ai': { price: 10, period: 'monthly' },
+    'grammarly premium': { price: 12, period: 'monthly' },
+    'microsoft 365': { price: 9.99, period: 'monthly' },
+    'office 365': { price: 9.99, period: 'monthly' },
+    'canva pro': { price: 15, period: 'monthly' },
+    'capcut pro': { price: 9.99, period: 'monthly' },
+    'adobe creative cloud': { price: 59.99, period: 'monthly' },
+    'photoshop': { price: 22.99, period: 'monthly' },
+    'icloud+': { price: 0.99, period: 'monthly' },
+    'google one': { price: 1.99, period: 'monthly' },
+    'dropbox': { price: 11.99, period: 'monthly' },
+    'xbox game pass': { price: 19.99, period: 'monthly' },
+    'playstation plus': { price: 9.99, period: 'monthly' },
+    'nintendo switch online': { price: 19.99, period: 'yearly' },
+    'discord nitro': { price: 9.99, period: 'monthly' },
+    'apple arcade': { price: 6.99, period: 'monthly' },
+    'ea play': { price: 5.99, period: 'monthly' },
+    'nordvpn': { price: 12.99, period: 'monthly' },
+    'expressvpn': { price: 12.95, period: 'monthly' },
+    'surfshark': { price: 15.45, period: 'monthly' },
+    '1password': { price: 2.99, period: 'monthly' },
+    'duolingo plus': { price: 12.99, period: 'monthly' },
+    'coursera': { price: 59, period: 'monthly' },
+    'telegram premium': { price: 4.99, period: 'monthly' },
+    'x premium': { price: 8, period: 'monthly' },
+    'snapchat+': { price: 3.99, period: 'monthly' },
+    'tinder gold': { price: 24.99, period: 'monthly' },
+    'chatgpt plus': { price: 20, period: 'monthly' },
+    'chatgpt pro': { price: 200, period: 'monthly' },
+    'chatgpt team': { price: 30, period: 'monthly' },
+    'claude pro': { price: 20, period: 'monthly' },
+    'claude max': { price: 100, period: 'monthly' },
+    'gemini advanced': { price: 19.99, period: 'monthly' },
+    'google ai pro': { price: 19.99, period: 'monthly' },
+    'google ai ultra': { price: 249.99, period: 'monthly' },
+    'kimi+': { price: 19.99, period: 'monthly' },
+    'grok premium': { price: 8, period: 'monthly' },
+    'grok premium+': { price: 40, period: 'monthly' },
+    'x premium+': { price: 40, period: 'monthly' },
+    'le chat': { price: 14.99, period: 'monthly' },
+    'poe': { price: 19.99, period: 'monthly' },
+    'c.ai+': { price: 9.99, period: 'monthly' },
+    'perplexity pro': { price: 20, period: 'monthly' },
+    'midjourney basic': { price: 10, period: 'monthly' },
+    'midjourney standard': { price: 30, period: 'monthly' },
+    'midjourney pro': { price: 60, period: 'monthly' },
+    'copilot': { price: 10, period: 'monthly' },
+    'github copilot': { price: 10, period: 'monthly' },
+    'github copilot pro': { price: 10, period: 'monthly' },
+    'cursor pro': { price: 20, period: 'monthly' },
+    'windsurf pro': { price: 15, period: 'monthly' },
+    'replit core': { price: 20, period: 'monthly' },
+    'v0 premium': { price: 20, period: 'monthly' },
+    'suno pro': { price: 10, period: 'monthly' },
+    'elevenlabs starter': { price: 5, period: 'monthly' },
+    'elevenlabs creator': { price: 22, period: 'monthly' },
+    'runway standard': { price: 15, period: 'monthly' },
+    'runway pro': { price: 35, period: 'monthly' },
+    'leonardo pro': { price: 12, period: 'monthly' },
+    'ideogram plus': { price: 8, period: 'monthly' },
+    'kling standard': { price: 10, period: 'monthly' },
+    'kling ai standard': { price: 10, period: 'monthly' },
+    'kling pro': { price: 35, period: 'monthly' },
+    'kling ai pro': { price: 35, period: 'monthly' },
+    'kling premier': { price: 92, period: 'monthly' },
+    'kling ai premier': { price: 92, period: 'monthly' },
+    'pika standard': { price: 10, period: 'monthly' },
+    'pika pro': { price: 35, period: 'monthly' },
+    'dream machine': { price: 9.99, period: 'monthly' },
+    'luma dream machine': { price: 9.99, period: 'monthly' },
+    'pixverse pro': { price: 10, period: 'monthly' },
+    'krea pro': { price: 10, period: 'monthly' },
+    'freepik premium': { price: 12, period: 'monthly' },
+    'heygen creator': { price: 29, period: 'monthly' },
+    'gamma': { price: 10, period: 'monthly' },
+    'lovable pro': { price: 20, period: 'monthly' },
+    'bolt pro': { price: 20, period: 'monthly' },
+    'roblox plus 500': { price: 4.99, period: 'monthly' },
+    'roblox plus 1000': { price: 9.99, period: 'monthly' },
+    'roblox plus 2000': { price: 19.99, period: 'monthly' },
+    'roblox 500': { price: 4.99, period: 'monthly' },
+    'roblox 1000': { price: 9.99, period: 'monthly' },
+    'roblox 2000': { price: 19.99, period: 'monthly' },
+    'robux 500': { price: 4.99, period: 'monthly' },
+    'robux 1000': { price: 9.99, period: 'monthly' },
+    'robux 2000': { price: 19.99, period: 'monthly' },
+};
+
 // ========== STATE ==========
 let subscriptions = JSON.parse(localStorage.getItem('subs_v2') || '[]');
 let editingId = null;
@@ -406,6 +513,52 @@ function escapeHtml(value) {
     }[ch]));
 }
 
+function getPresetPrice(match) {
+    if (!match) return null;
+    const keys = [match.key, match.name].filter(Boolean).map(v => String(v).toLowerCase().trim());
+    for (const key of keys) {
+        if (PRESET_PRICES[key]) return { ...PRESET_PRICES[key], sourceType: 'preset' };
+    }
+    return null;
+}
+
+function formatResolvedPrice(priceResult) {
+    if (!priceResult) return null;
+    return `$${priceResult.price.toFixed(2)} ${getPeriodLabel(priceResult.period || 'monthly')}`;
+}
+
+function applyResolvedPrice(priceResult, force = false) {
+    if (!priceResult) return false;
+    const priceEl = document.getElementById('subPrice');
+    const periodEl = document.getElementById('subPeriod');
+    if (!priceEl || !periodEl) return false;
+
+    const priceIsEmpty = priceEl.value === '' || Number.isNaN(parseFloat(priceEl.value));
+    const canReplacePrice = force || priceIsEmpty || !priceWasManuallyEdited || priceEl.value === String(lastAutoPrice);
+
+    isApplyingAutoPrice = true;
+    if (canReplacePrice) {
+        priceEl.value = priceResult.price.toFixed(2);
+        lastAutoPrice = priceEl.value;
+        priceWasManuallyEdited = false;
+    }
+    if ((force || !periodWasManuallyEdited) && priceResult.period) {
+        periodEl.value = priceResult.period;
+        periodWasManuallyEdited = false;
+    }
+    isApplyingAutoPrice = false;
+    return canReplacePrice;
+}
+
+function applyPresetPrice(match, force = false) {
+    const autoPrice = document.getElementById('subAutoPrice');
+    if (!autoPrice || !autoPrice.checked) return null;
+    const preset = getPresetPrice(match);
+    if (!preset) return null;
+    applyResolvedPrice(preset, force);
+    return preset;
+}
+
 // ========== ONLINE PRICE LOOKUP ==========
 // Static GitHub Pages cannot scrape the web directly because most sites block CORS.
 // We therefore try official pricing pages through public CORS proxies.
@@ -440,24 +593,45 @@ const PRICE_LOOKUP_SOURCES = [
     { match: /capcut/, urls: ['https://www.capcut.com/pricing'] },
 ];
 
-function getPriceLookupSources(input, match) {
-    if (!match) return [];
-    const haystack = `${input || ''} ${match.key || ''} ${match.name || ''} ${match.domain || ''}`.toLowerCase();
+function getSearchSlugs(input) {
+    const cleaned = String(input || '')
+        .toLowerCase()
+        .replace(/\b(plus|pro|premium|standard|basic|team|max|ultra|starter|creator|subscription|подписка|цена|price|plan|тариф|500|1000|2000)\b/g, ' ')
+        .replace(/[^a-z0-9\s-]/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+    const joined = cleaned.replace(/\s+/g, '');
+    const dashed = cleaned.replace(/\s+/g, '-');
+    return [...new Set([joined, dashed].filter(slug => slug.length >= 3))].slice(0, 3);
+}
+
+function getPriceLookupSources(input, match = null) {
+    const haystack = `${input || ''} ${match?.key || ''} ${match?.name || ''} ${match?.domain || ''}`.toLowerCase();
     const urls = [];
 
+    // For unknown services we can still try common official pricing URLs and a search page.
     PRICE_LOOKUP_SOURCES.forEach(source => {
         if (source.match.test(haystack)) urls.push(...source.urls);
     });
 
-    if (match.domain) {
+    if (match?.domain) {
         const domain = match.domain.replace(/^www\./, '');
         urls.push(`https://${domain}/pricing`);
         urls.push(`https://${domain}/pricing/`);
         urls.push(`https://${domain}/plans`);
         urls.push(`https://${domain}/premium`);
+    } else {
+        getSearchSlugs(input).forEach(slug => {
+            ['com', 'ai', 'app', 'io', 'co'].forEach(tld => {
+                urls.push(`https://${slug}.${tld}/pricing`);
+                urls.push(`https://${slug}.${tld}/pricing/`);
+                urls.push(`https://www.${slug}.${tld}/pricing`);
+            });
+        });
+        urls.push(`https://duckduckgo.com/html/?q=${encodeURIComponent(`${input} subscription pricing $ monthly`)}`);
     }
 
-    return [...new Set(urls)].slice(0, 5);
+    return [...new Set(urls)].slice(0, match ? 5 : 14);
 }
 
 function getPlanKeywords(input, match) {
@@ -526,9 +700,8 @@ function extractPricesFromText(text, input, match) {
     return prices;
 }
 
-async function findOnlinePrice(input, match) {
-    if (!match) return null;
-    const cacheKey = `${match.key || match.name}|${input}`.toLowerCase();
+async function findOnlinePrice(input, match = null) {
+    const cacheKey = `${match?.key || match?.name || 'unknown'}|${input}`.toLowerCase();
     if (onlinePriceCache.has(cacheKey)) return onlinePriceCache.get(cacheKey);
 
     const sources = getPriceLookupSources(input, match);
@@ -548,24 +721,7 @@ async function findOnlinePrice(input, match) {
 }
 
 function applyOnlinePrice(result, force = false) {
-    if (!result) return false;
-    const priceEl = document.getElementById('subPrice');
-    const periodEl = document.getElementById('subPeriod');
-    const priceIsEmpty = priceEl.value === '' || Number.isNaN(parseFloat(priceEl.value));
-    const canReplacePrice = force || priceIsEmpty || !priceWasManuallyEdited || priceEl.value === String(lastAutoPrice);
-
-    isApplyingAutoPrice = true;
-    if (canReplacePrice) {
-        priceEl.value = result.price.toFixed(2);
-        lastAutoPrice = priceEl.value;
-        priceWasManuallyEdited = false;
-    }
-    if ((force || !periodWasManuallyEdited) && result.period) {
-        periodEl.value = result.period;
-        periodWasManuallyEdited = false;
-    }
-    isApplyingAutoPrice = false;
-    return canReplacePrice;
+    return applyResolvedPrice(result, force);
 }
 
 function updateSubscriptionCheck(name, status = 'idle', priceResult = null) {
@@ -586,31 +742,39 @@ function updateSubscriptionCheck(name, status = 'idle', priceResult = null) {
     }
 
     if (!match) {
-        check.className = 'subscription-check warning';
+        const priceRow = priceResult
+            ? `<div class="check-row"><span>Цена из интернета:</span><strong>${formatResolvedPrice(priceResult)}</strong></div>`
+            : status === 'loading'
+                ? `<div class="check-row"><span>Цена:</span><strong>Ищу в интернете...</strong></div>`
+                : status === 'not-found'
+                    ? `<div class="check-row"><span>Цена:</span><strong>Не найдена</strong></div>`
+                    : `<div class="check-row"><span>Цена:</span><strong>только для неизвестных — поиск в интернете</strong></div>`;
+        const hint = priceResult
+            ? '<div class="check-hint">Сервис неизвестен каталогу, поэтому цена была найдена через интернет.</div>'
+            : status === 'loading'
+                ? '<div class="check-hint">Сервис не найден в каталоге — пробую найти цену в интернете.</div>'
+                : '<div class="check-hint">Если сервис неизвестный, нажмите Enter/«Добавить» — приложение попробует найти цену онлайн.</div>';
+
+        check.className = status === 'not-found' ? 'subscription-check warning' : 'subscription-check muted';
         check.innerHTML = `
             <div class="check-title">Тестовая проверка</div>
             <div class="check-row"><span>Что хотите посмотреть:</span><strong>${safeTrimmed}</strong></div>
-            <div class="check-row"><span>Что за подписка:</span><strong>Не найдено в каталоге</strong></div>
-            <div class="check-hint">Для неизвестной подписки цену нужно указать вручную.</div>
+            <div class="check-row"><span>Что за подписка:</span><strong>Неизвестный сервис</strong></div>
+            ${priceRow}
+            ${hint}
         `;
         return;
     }
 
-    const priceRow = priceResult
-        ? `<div class="check-row"><span>Цена из интернета:</span><strong>$${priceResult.price.toFixed(2)} ${getPeriodLabel(priceResult.period || 'monthly')}</strong></div>`
-        : status === 'loading'
-            ? `<div class="check-row"><span>Цена из интернета:</span><strong>Ищу...</strong></div>`
-            : status === 'not-found'
-                ? `<div class="check-row"><span>Цена из интернета:</span><strong>Не найдена</strong></div>`
-                : `<div class="check-row"><span>Цена:</span><strong>будет взята из интернета</strong></div>`;
+    const preset = priceResult || getPresetPrice(match);
+    const priceRow = preset
+        ? `<div class="check-row"><span>Цена заложена:</span><strong>${formatResolvedPrice(preset)}</strong></div>`
+        : `<div class="check-row"><span>Цена:</span><strong>нет в базе, введите вручную</strong></div>`;
+    const hint = preset
+        ? '<div class="check-hint">Подписка есть в каталоге — интернет не используется, цена подставляется сразу из базы.</div>'
+        : '<div class="check-hint">Подписка есть в каталоге, поэтому интернет-поиск не запускается. Если цены нет в базе — введите её вручную.</div>';
 
-    const hint = status === 'not-found'
-        ? '<div class="check-hint">Не удалось прочитать цену с официальных страниц. Введите цену вручную или попробуйте точнее указать тариф.</div>'
-        : status === 'loading'
-            ? '<div class="check-hint">Проверяю официальные страницы подписки. Если цена найдётся, поле стоимости заменится автоматически.</div>'
-            : '<div class="check-hint">Нажмите Enter/«Добавить» — если поле цены пустое, сервис попробует взять актуальную цену из интернета.</div>';
-
-    check.className = status === 'not-found' ? 'subscription-check warning' : 'subscription-check success';
+    check.className = preset ? 'subscription-check success' : 'subscription-check warning';
     check.innerHTML = `
         <div class="check-title">Тестовая проверка</div>
         <div class="check-row"><span>Что хотите посмотреть:</span><strong>${safeTrimmed}</strong></div>
@@ -632,11 +796,16 @@ async function lookupAndApplyOnlinePrice(name, options = {}) {
     if (!autoPrice || !autoPrice.checked) return null;
 
     const match = findMatch(name);
-    if (!match) return null;
+    if (match) {
+        const preset = applyPresetPrice(match, force);
+        updateSubscriptionCheck(name, 'preset', preset);
+        if (preset && !silent) showToast(`Цена заложена в базе: ${formatResolvedPrice(preset)}`, 'success');
+        return preset;
+    }
 
     const seq = ++priceLookupSeq;
     updateSubscriptionCheck(name, 'loading');
-    const result = await findOnlinePrice(name, match);
+    const result = await findOnlinePrice(name, null);
     if (seq !== priceLookupSeq) return null;
 
     if (result) {
@@ -1068,8 +1237,10 @@ function resetForm() {
 
 function updateIconPreview(name) {
     const match = findMatch(name);
-    updateSubscriptionCheck(name);
-    if (match) scheduleOnlinePriceLookup(name);
+    const preset = match ? applyPresetPrice(match) : null;
+    updateSubscriptionCheck(name, preset ? 'preset' : 'idle', preset);
+    if (!match && name.trim().length >= 3) scheduleOnlinePriceLookup(name);
+    else clearTimeout(priceLookupTimer);
     const preview = document.getElementById('iconPreview');
     const nameEl = document.getElementById('iconPreviewName');
     const hintEl = document.getElementById('iconPreviewHint');
@@ -1122,22 +1293,34 @@ document.addEventListener('DOMContentLoaded', () => {
         const autoPrice = document.getElementById('subAutoPrice');
 
         let price = parseFloat(priceEl.value);
-        if (match && autoPrice.checked) {
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Ищу цену в интернете...';
-            const result = await lookupAndApplyOnlinePrice(name, { force: true, silent: false });
-            price = parseFloat(priceEl.value);
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = originalSubmitHtml;
+        if (autoPrice.checked) {
+            if (match) {
+                const preset = applyPresetPrice(match, true);
+                updateSubscriptionCheck(name, 'preset', preset);
+                price = parseFloat(priceEl.value);
 
-            if (!result && (priceEl.value === '' || Number.isNaN(price))) {
-                priceEl.focus();
-                return;
+                if (!preset && (priceEl.value === '' || Number.isNaN(price))) {
+                    showToast('Эта подписка есть в каталоге, но цена не заложена. Введите стоимость вручную.', 'warning');
+                    priceEl.focus();
+                    return;
+                }
+            } else {
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Ищу цену в интернете...';
+                const result = await lookupAndApplyOnlinePrice(name, { force: true, silent: false });
+                price = parseFloat(priceEl.value);
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalSubmitHtml;
+
+                if (!result && (priceEl.value === '' || Number.isNaN(price))) {
+                    priceEl.focus();
+                    return;
+                }
             }
         }
 
         if (priceEl.value === '' || Number.isNaN(price)) {
-            showToast(match ? 'Цена в интернете не найдена — введите стоимость вручную.' : 'Введите стоимость подписки.', 'warning');
+            showToast(match ? 'Введите стоимость подписки.' : 'Цена в интернете не найдена — введите стоимость вручную.', 'warning');
             priceEl.focus();
             return;
         }
@@ -1172,7 +1355,16 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!isApplyingAutoPrice) periodWasManuallyEdited = true;
     });
     autoPriceInput.addEventListener('change', () => {
-        if (autoPriceInput.checked) lookupAndApplyOnlinePrice(nameInput.value.trim(), { force: true, silent: false });
+        if (!autoPriceInput.checked) return;
+        const val = nameInput.value.trim();
+        const match = findMatch(val);
+        if (match) {
+            const preset = applyPresetPrice(match, true);
+            updateSubscriptionCheck(val, 'preset', preset);
+            if (preset) showToast(`Цена заложена в базе: ${formatResolvedPrice(preset)}`, 'success');
+        } else {
+            lookupAndApplyOnlinePrice(val, { force: true, silent: false });
+        }
     });
 
     nameInput.addEventListener('input', () => {
@@ -1189,7 +1381,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                         <div class="ac-item-content">
                             <div class="ac-item-name">${s.name}</div>
-                            <div class="ac-item-meta">${getCategoryLabel(s.category)} · цена из интернета</div>
+                            <div class="ac-item-meta">${getPresetPrice(s) ? `${formatResolvedPrice(getPresetPrice(s))} · заложено` : `${getCategoryLabel(s.category)} · цена вручную`}</div>
                         </div>
                     </div>
                 `).join('');
@@ -1200,12 +1392,15 @@ document.addEventListener('DOMContentLoaded', () => {
                         nameInput.value = item.dataset.name;
                         updateIconPreview(item.dataset.name);
 
-                        // Auto-fill category and color, then try to get the current price from the internet
+                        // Auto-fill category and color, then apply the embedded price if we have it
                         document.getElementById('subCategory').value = item.dataset.category;
                         document.querySelectorAll('input[name="subColor"]').forEach(inp => {
                             if (inp.value === item.dataset.color) inp.checked = true;
                         });
-                        lookupAndApplyOnlinePrice(item.dataset.name, { force: true, silent: false });
+                        const selectedMatch = findMatch(item.dataset.name);
+                        const preset = applyPresetPrice(selectedMatch, true);
+                        updateSubscriptionCheck(item.dataset.name, 'preset', preset);
+                        if (preset) showToast(`Цена заложена в базе: ${formatResolvedPrice(preset)}`, 'success');
 
                         suggestionsEl.classList.remove('active');
                     });
