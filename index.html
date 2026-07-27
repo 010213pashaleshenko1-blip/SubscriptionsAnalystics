@@ -212,6 +212,12 @@
                         <div class="autocomplete-dropdown" id="suggestions"></div>
                     </div>
 
+                    <div class="subscription-check muted" id="subscriptionCheck">
+                        <div class="check-title">Тестовая проверка</div>
+                        <div class="check-row"><span>Что хотите посмотреть:</span><strong>—</strong></div>
+                        <div class="check-row"><span>Что за подписка:</span><strong>Введите название</strong></div>
+                    </div>
+
                     <div class="form-row">
                         <div class="form-group form-group-half">
                             <label for="subPrice">Стоимость ($)</label>
@@ -232,6 +238,21 @@
                                 </select>
                             </div>
                         </div>
+                    </div>
+
+                    <div class="form-group toggle-group auto-price-group">
+                        <label class="toggle-label auto-price-label">
+                            <span>
+                                <strong>Автоматическая цена</strong>
+                                <small>Если тариф есть в каталоге, стоимость и период заполнятся сами</small>
+                            </span>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="subAutoPrice" checked>
+                                <div class="toggle-track">
+                                    <div class="toggle-thumb"></div>
+                                </div>
+                            </div>
+                        </label>
                     </div>
 
                     <div class="form-row">

@@ -1,5 +1,5 @@
 // ========== SUBSCRIPTION CATALOG ==========
-// Each entry: { domain, color, name, category }
+// Each entry: { domain, color, name, category, price?, period? }
 // domain is used to fetch a favicon (Google's favicon service)
 // If no match, we use ui-avatars.com to generate a colored letter icon
 const CATALOG = {
@@ -68,45 +68,131 @@ const CATALOG = {
 
     // AI
     'chatgpt':       { domain: 'chatgpt.com',      color: '#10a37f', name: 'ChatGPT',        category: 'ai' },
-    'chatgpt plus':  { domain: 'chatgpt.com',      color: '#10a37f', name: 'ChatGPT Plus',   category: 'ai' },
-    'chatgpt pro':   { domain: 'chatgpt.com',      color: '#10a37f', name: 'ChatGPT Pro',    category: 'ai' },
-    'chatgpt team':  { domain: 'chatgpt.com',      color: '#10a37f', name: 'ChatGPT Team',   category: 'ai' },
+    'chatgpt plus':  { domain: 'chatgpt.com',      color: '#10a37f', name: 'ChatGPT Plus',   category: 'ai', price: 20, period: 'monthly' },
+    'chatgpt pro':   { domain: 'chatgpt.com',      color: '#10a37f', name: 'ChatGPT Pro',    category: 'ai', price: 200, period: 'monthly' },
+    'chatgpt team':  { domain: 'chatgpt.com',      color: '#10a37f', name: 'ChatGPT Team',   category: 'ai', price: 30, period: 'monthly' },
     'openai':        { domain: 'openai.com',       color: '#10a37f', name: 'OpenAI',         category: 'ai' },
     'claude':        { domain: 'claude.ai',        color: '#d97757', name: 'Claude',         category: 'ai' },
-    'claude pro':    { domain: 'claude.ai',        color: '#d97757', name: 'Claude Pro',     category: 'ai' },
-    'claude max':    { domain: 'claude.ai',        color: '#d97757', name: 'Claude Max',     category: 'ai' },
+    'claude pro':    { domain: 'claude.ai',        color: '#d97757', name: 'Claude Pro',     category: 'ai', price: 20, period: 'monthly' },
+    'claude max':    { domain: 'claude.ai',        color: '#d97757', name: 'Claude Max',     category: 'ai', price: 100, period: 'monthly' },
     'gemini':        { domain: 'gemini.google.com', color: '#4285f4', name: 'Gemini',        category: 'ai' },
-    'gemini advanced': { domain: 'gemini.google.com', color: '#4285f4', name: 'Gemini Advanced', category: 'ai' },
-    'google ai pro': { domain: 'gemini.google.com', color: '#4285f4', name: 'Google AI Pro', category: 'ai' },
-    'google ai ultra': { domain: 'gemini.google.com', color: '#4285f4', name: 'Google AI Ultra', category: 'ai' },
+    'gemini advanced': { domain: 'gemini.google.com', color: '#4285f4', name: 'Gemini Advanced', category: 'ai', price: 19.99, period: 'monthly' },
+    'google ai pro': { domain: 'gemini.google.com', color: '#4285f4', name: 'Google AI Pro', category: 'ai', price: 19.99, period: 'monthly' },
+    'google ai ultra': { domain: 'gemini.google.com', color: '#4285f4', name: 'Google AI Ultra', category: 'ai', price: 249.99, period: 'monthly' },
     'kimi':          { domain: 'kimi.com',         color: '#000000', name: 'Kimi',           category: 'ai' },
-    'kimi+':         { domain: 'kimi.com',         color: '#000000', name: 'Kimi+',          category: 'ai' },
+    'kimi+':         { domain: 'kimi.com',         color: '#000000', name: 'Kimi+',          category: 'ai', price: 19.99, period: 'monthly' },
     'moonshot ai':   { domain: 'moonshot.ai',      color: '#000000', name: 'Moonshot AI',    category: 'ai' },
     'deepseek':      { domain: 'deepseek.com',     color: '#4d6bfe', name: 'DeepSeek',       category: 'ai' },
     'grok':          { domain: 'grok.com',         color: '#000000', name: 'Grok',           category: 'ai' },
-    'x premium+':    { domain: 'x.com',            color: '#000000', name: 'X Premium+',     category: 'ai' },
+    'grok premium':  { domain: 'grok.com',         color: '#000000', name: 'Grok Premium',   category: 'ai', price: 8, period: 'monthly' },
+    'grok premium+': { domain: 'grok.com',         color: '#000000', name: 'Grok Premium+',  category: 'ai', price: 40, period: 'monthly' },
+    'x premium+':    { domain: 'x.com',            color: '#000000', name: 'X Premium+',     category: 'ai', price: 40, period: 'monthly' },
     'mistral':       { domain: 'mistral.ai',       color: '#fa520f', name: 'Mistral (Le Chat)', category: 'ai' },
-    'le chat':       { domain: 'mistral.ai',       color: '#fa520f', name: 'Le Chat Pro',    category: 'ai' },
+    'le chat':       { domain: 'mistral.ai',       color: '#fa520f', name: 'Le Chat Pro',    category: 'ai', price: 14.99, period: 'monthly' },
     'qwen':          { domain: 'qwen.ai',          color: '#615ced', name: 'Qwen',           category: 'ai' },
-    'poe':           { domain: 'poe.com',          color: '#5b57d1', name: 'Poe',            category: 'ai' },
+    'poe':           { domain: 'poe.com',          color: '#5b57d1', name: 'Poe',            category: 'ai', price: 19.99, period: 'monthly' },
     'character.ai':  { domain: 'character.ai',     color: '#000000', name: 'Character.AI',   category: 'ai' },
     'character ai':  { domain: 'character.ai',     color: '#000000', name: 'Character.AI',   category: 'ai' },
+    'c.ai+':         { domain: 'character.ai',     color: '#000000', name: 'Character.AI+',  category: 'ai', price: 9.99, period: 'monthly' },
     'perplexity':    { domain: 'perplexity.ai',    color: '#20b8cd', name: 'Perplexity',     category: 'ai' },
-    'perplexity pro':{ domain: 'perplexity.ai',    color: '#20b8cd', name: 'Perplexity Pro', category: 'ai' },
+    'perplexity pro':{ domain: 'perplexity.ai',    color: '#20b8cd', name: 'Perplexity Pro', category: 'ai', price: 20, period: 'monthly' },
     'midjourney':    { domain: 'midjourney.com',   color: '#000000', name: 'Midjourney',     category: 'ai' },
-    'copilot':       { domain: 'github.com',       color: '#6e40c9', name: 'Copilot',        category: 'ai' },
-    'github copilot':{ domain: 'github.com',       color: '#6e40c9', name: 'GitHub Copilot', category: 'ai' },
+    'midjourney basic': { domain: 'midjourney.com', color: '#000000', name: 'Midjourney Basic', category: 'ai', price: 10, period: 'monthly' },
+    'midjourney standard': { domain: 'midjourney.com', color: '#000000', name: 'Midjourney Standard', category: 'ai', price: 30, period: 'monthly' },
+    'midjourney pro': { domain: 'midjourney.com',  color: '#000000', name: 'Midjourney Pro', category: 'ai', price: 60, period: 'monthly' },
+    'copilot':       { domain: 'github.com',       color: '#6e40c9', name: 'Copilot',        category: 'ai', price: 10, period: 'monthly' },
+    'github copilot':{ domain: 'github.com',       color: '#6e40c9', name: 'GitHub Copilot', category: 'ai', price: 10, period: 'monthly' },
+    'github copilot pro': { domain: 'github.com',  color: '#6e40c9', name: 'GitHub Copilot Pro', category: 'ai', price: 10, period: 'monthly' },
     'cursor':        { domain: 'cursor.com',       color: '#000000', name: 'Cursor',         category: 'ai' },
+    'cursor pro':    { domain: 'cursor.com',       color: '#000000', name: 'Cursor Pro',     category: 'ai', price: 20, period: 'monthly' },
     'windsurf':      { domain: 'windsurf.com',     color: '#58e5c1', name: 'Windsurf',       category: 'ai' },
+    'windsurf pro':  { domain: 'windsurf.com',     color: '#58e5c1', name: 'Windsurf Pro',   category: 'ai', price: 15, period: 'monthly' },
     'replit':        { domain: 'replit.com',       color: '#f26207', name: 'Replit',         category: 'ai' },
+    'replit core':   { domain: 'replit.com',       color: '#f26207', name: 'Replit Core',    category: 'ai', price: 20, period: 'monthly' },
     'v0':            { domain: 'v0.app',           color: '#000000', name: 'v0',             category: 'ai' },
+    'v0 premium':    { domain: 'v0.app',           color: '#000000', name: 'v0 Premium',     category: 'ai', price: 20, period: 'monthly' },
     'manus':         { domain: 'manus.im',         color: '#6c5ce7', name: 'Manus',          category: 'ai' },
     'suno':          { domain: 'suno.com',         color: '#000000', name: 'Suno',           category: 'ai' },
+    'suno pro':      { domain: 'suno.com',         color: '#000000', name: 'Suno Pro',       category: 'ai', price: 10, period: 'monthly' },
     'elevenlabs':    { domain: 'elevenlabs.io',    color: '#000000', name: 'ElevenLabs',     category: 'ai' },
+    'elevenlabs starter': { domain: 'elevenlabs.io', color: '#000000', name: 'ElevenLabs Starter', category: 'ai', price: 5, period: 'monthly' },
+    'elevenlabs creator': { domain: 'elevenlabs.io', color: '#000000', name: 'ElevenLabs Creator', category: 'ai', price: 22, period: 'monthly' },
     'runway':        { domain: 'runwayml.com',     color: '#000000', name: 'Runway',         category: 'ai' },
+    'runway standard': { domain: 'runwayml.com',   color: '#000000', name: 'Runway Standard', category: 'ai', price: 15, period: 'monthly' },
+    'runway pro':    { domain: 'runwayml.com',     color: '#000000', name: 'Runway Pro',     category: 'ai', price: 35, period: 'monthly' },
     'leonardo ai':   { domain: 'leonardo.ai',      color: '#0d1117', name: 'Leonardo AI',    category: 'ai' },
+    'leonardo pro':  { domain: 'leonardo.ai',      color: '#0d1117', name: 'Leonardo Pro',   category: 'ai', price: 12, period: 'monthly' },
     'ideogram':      { domain: 'ideogram.ai',      color: '#000000', name: 'Ideogram',       category: 'ai' },
-    'notion ai':     { domain: 'notion.so',        color: '#000000', name: 'Notion AI',      category: 'ai' },
+    'ideogram plus': { domain: 'ideogram.ai',      color: '#000000', name: 'Ideogram Plus',  category: 'ai', price: 8, period: 'monthly' },
+    'notion ai':     { domain: 'notion.so',        color: '#000000', name: 'Notion AI',      category: 'ai', price: 10, period: 'monthly' },
+
+    // AI video / image / creators
+    'kling':          { domain: 'klingai.com',      color: '#2454ff', name: 'Kling AI',          category: 'ai' },
+    'kling ai':       { domain: 'klingai.com',      color: '#2454ff', name: 'Kling AI',          category: 'ai' },
+    'kling standard': { domain: 'klingai.com',      color: '#2454ff', name: 'Kling AI Standard', category: 'ai', price: 10, period: 'monthly' },
+    'kling ai standard': { domain: 'klingai.com',   color: '#2454ff', name: 'Kling AI Standard', category: 'ai', price: 10, period: 'monthly' },
+    'kling pro':      { domain: 'klingai.com',      color: '#2454ff', name: 'Kling AI Pro',      category: 'ai', price: 35, period: 'monthly' },
+    'kling ai pro':   { domain: 'klingai.com',      color: '#2454ff', name: 'Kling AI Pro',      category: 'ai', price: 35, period: 'monthly' },
+    'kling premier':  { domain: 'klingai.com',      color: '#2454ff', name: 'Kling AI Premier',  category: 'ai', price: 92, period: 'monthly' },
+    'kling ai premier': { domain: 'klingai.com',    color: '#2454ff', name: 'Kling AI Premier',  category: 'ai', price: 92, period: 'monthly' },
+    'pika':           { domain: 'pika.art',         color: '#7c3aed', name: 'Pika',              category: 'ai' },
+    'pika art':       { domain: 'pika.art',         color: '#7c3aed', name: 'Pika',              category: 'ai' },
+    'pika standard':  { domain: 'pika.art',         color: '#7c3aed', name: 'Pika Standard',     category: 'ai', price: 10, period: 'monthly' },
+    'pika pro':       { domain: 'pika.art',         color: '#7c3aed', name: 'Pika Pro',          category: 'ai', price: 35, period: 'monthly' },
+    'luma':           { domain: 'lumalabs.ai',      color: '#111827', name: 'Luma AI',           category: 'ai' },
+    'luma ai':        { domain: 'lumalabs.ai',      color: '#111827', name: 'Luma AI',           category: 'ai' },
+    'dream machine':  { domain: 'lumalabs.ai',      color: '#111827', name: 'Luma Dream Machine', category: 'ai', price: 9.99, period: 'monthly' },
+    'luma dream machine': { domain: 'lumalabs.ai', color: '#111827', name: 'Luma Dream Machine', category: 'ai', price: 9.99, period: 'monthly' },
+    'pixverse':       { domain: 'pixverse.ai',      color: '#6d28d9', name: 'PixVerse',          category: 'ai' },
+    'pixverse pro':   { domain: 'pixverse.ai',      color: '#6d28d9', name: 'PixVerse Pro',      category: 'ai', price: 10, period: 'monthly' },
+    'hailuo':         { domain: 'hailuoai.video',   color: '#0ea5e9', name: 'Hailuo AI',         category: 'ai' },
+    'hailuo ai':      { domain: 'hailuoai.video',   color: '#0ea5e9', name: 'Hailuo AI',         category: 'ai' },
+    'minimax':        { domain: 'minimax.io',       color: '#0ea5e9', name: 'MiniMax',           category: 'ai' },
+    'higgsfield':     { domain: 'higgsfield.ai',    color: '#111111', name: 'Higgsfield',        category: 'ai' },
+    'haiper':         { domain: 'haiper.ai',        color: '#ff4d6d', name: 'Haiper AI',         category: 'ai' },
+    'veo':            { domain: 'deepmind.google',  color: '#4285f4', name: 'Google Veo',        category: 'ai' },
+    'google veo':     { domain: 'deepmind.google',  color: '#4285f4', name: 'Google Veo',        category: 'ai' },
+    'sora':           { domain: 'openai.com',       color: '#10a37f', name: 'Sora',              category: 'ai' },
+    'wan ai':         { domain: 'tongyi.aliyun.com', color: '#ff6a00', name: 'Wan AI',           category: 'ai' },
+    'hunyuan video':  { domain: 'hunyuan.tencent.com', color: '#0052d9', name: 'Hunyuan Video',  category: 'ai' },
+    'dreamina':       { domain: 'dreamina.capcut.com', color: '#000000', name: 'Dreamina',       category: 'ai' },
+    'jimeng':         { domain: 'jimeng.jianying.com', color: '#000000', name: 'Jimeng AI',      category: 'ai' },
+    'krea':           { domain: 'krea.ai',          color: '#111111', name: 'Krea AI',           category: 'ai' },
+    'krea ai':        { domain: 'krea.ai',          color: '#111111', name: 'Krea AI',           category: 'ai' },
+    'krea pro':       { domain: 'krea.ai',          color: '#111111', name: 'Krea Pro',          category: 'ai', price: 10, period: 'monthly' },
+    'freepik':        { domain: 'freepik.com',      color: '#1273eb', name: 'Freepik',           category: 'ai' },
+    'freepik premium':{ domain: 'freepik.com',      color: '#1273eb', name: 'Freepik Premium',   category: 'ai', price: 12, period: 'monthly' },
+    'magnific':       { domain: 'magnific.ai',      color: '#000000', name: 'Magnific AI',       category: 'ai' },
+    'topaz':          { domain: 'topazlabs.com',    color: '#1b75bb', name: 'Topaz Labs',        category: 'ai' },
+    'topaz labs':     { domain: 'topazlabs.com',    color: '#1b75bb', name: 'Topaz Labs',        category: 'ai' },
+    'recraft':        { domain: 'recraft.ai',       color: '#ff5b3a', name: 'Recraft',           category: 'ai' },
+    'stability ai':   { domain: 'stability.ai',     color: '#000000', name: 'Stability AI',      category: 'ai' },
+    'clipdrop':       { domain: 'clipdrop.co',      color: '#111827', name: 'Clipdrop',          category: 'ai' },
+    'fal ai':         { domain: 'fal.ai',           color: '#000000', name: 'fal.ai',            category: 'ai' },
+    'replicate':      { domain: 'replicate.com',    color: '#000000', name: 'Replicate',         category: 'ai' },
+    'heygen':         { domain: 'heygen.com',       color: '#2563eb', name: 'HeyGen',            category: 'ai' },
+    'heygen creator': { domain: 'heygen.com',       color: '#2563eb', name: 'HeyGen Creator',    category: 'ai', price: 29, period: 'monthly' },
+    'synthesia':      { domain: 'synthesia.io',     color: '#6d28d9', name: 'Synthesia',         category: 'ai' },
+    'd-id':           { domain: 'd-id.com',         color: '#0ea5e9', name: 'D-ID',              category: 'ai' },
+    'descript':       { domain: 'descript.com',     color: '#22c55e', name: 'Descript',          category: 'ai' },
+    'opus clip':      { domain: 'opus.pro',         color: '#7c3aed', name: 'OpusClip',          category: 'ai' },
+    'opusclip':       { domain: 'opus.pro',         color: '#7c3aed', name: 'OpusClip',          category: 'ai' },
+    'invideo':        { domain: 'invideo.io',       color: '#7c3aed', name: 'InVideo AI',        category: 'ai' },
+    'invideo ai':     { domain: 'invideo.io',       color: '#7c3aed', name: 'InVideo AI',        category: 'ai' },
+    'kaiber':         { domain: 'kaiber.ai',        color: '#f97316', name: 'Kaiber',            category: 'ai' },
+    'vidyo ai':       { domain: 'vidyo.ai',         color: '#06b6d4', name: 'vidyo.ai',          category: 'ai' },
+    'akool':          { domain: 'akool.com',        color: '#f97316', name: 'Akool',             category: 'ai' },
+    'gamma':          { domain: 'gamma.app',        color: '#7c3aed', name: 'Gamma',             category: 'ai', price: 10, period: 'monthly' },
+    'beautiful ai':   { domain: 'beautiful.ai',     color: '#111827', name: 'Beautiful.ai',      category: 'ai' },
+    'lovable':        { domain: 'lovable.dev',      color: '#ff6b81', name: 'Lovable',           category: 'ai' },
+    'lovable pro':    { domain: 'lovable.dev',      color: '#ff6b81', name: 'Lovable Pro',       category: 'ai', price: 20, period: 'monthly' },
+    'bolt':           { domain: 'bolt.new',         color: '#facc15', name: 'Bolt',              category: 'ai' },
+    'bolt.new':       { domain: 'bolt.new',         color: '#facc15', name: 'Bolt.new',          category: 'ai' },
+    'bolt pro':       { domain: 'bolt.new',         color: '#facc15', name: 'Bolt Pro',          category: 'ai', price: 20, period: 'monthly' },
+    'warp':           { domain: 'warp.dev',         color: '#01a4ff', name: 'Warp',              category: 'ai' },
+    'tabnine':        { domain: 'tabnine.com',      color: '#6d28d9', name: 'Tabnine',           category: 'ai' },
+    'codeium':        { domain: 'codeium.com',      color: '#22c55e', name: 'Codeium',           category: 'ai' },
+    'supermaven':     { domain: 'supermaven.com',   color: '#111827', name: 'Supermaven',        category: 'ai' },
 
     // Cloud
     'icloud+':     { domain: 'icloud.com',       color: '#3693f5', name: 'iCloud+',      category: 'cloud' },
@@ -131,8 +217,18 @@ const CATALOG = {
     'nintendo':           { domain: 'nintendo.com',   color: '#e60012', name: 'Nintendo Switch Online', category: 'gaming' },
     'discord nitro':      { domain: 'discord.com',    color: '#5865f2', name: 'Discord Nitro',      category: 'gaming' },
     'discord':            { domain: 'discord.com',    color: '#5865f2', name: 'Discord Nitro',      category: 'gaming' },
-    'roblox premium':     { domain: 'roblox.com',     color: '#e2231a', name: 'Roblox Premium',     category: 'gaming' },
-    'roblox':             { domain: 'roblox.com',     color: '#e2231a', name: 'Roblox Premium',     category: 'gaming' },
+    'roblox premium':     { domain: 'roblox.com',     color: '#e2231a', name: 'Roblox Plus',        category: 'gaming' },
+    'roblox plus':        { domain: 'roblox.com',     color: '#e2231a', name: 'Roblox Plus',        category: 'gaming' },
+    'roblox plus 500':    { domain: 'roblox.com',     color: '#e2231a', name: 'Roblox Plus 500',    category: 'gaming', price: 4.99, period: 'monthly' },
+    'roblox plus 1000':   { domain: 'roblox.com',     color: '#e2231a', name: 'Roblox Plus 1000',   category: 'gaming', price: 9.99, period: 'monthly' },
+    'roblox plus 2000':   { domain: 'roblox.com',     color: '#e2231a', name: 'Roblox Plus 2000',   category: 'gaming', price: 19.99, period: 'monthly' },
+    'roblox 500':         { domain: 'roblox.com',     color: '#e2231a', name: 'Roblox Plus 500',    category: 'gaming', price: 4.99, period: 'monthly' },
+    'roblox 1000':        { domain: 'roblox.com',     color: '#e2231a', name: 'Roblox Plus 1000',   category: 'gaming', price: 9.99, period: 'monthly' },
+    'roblox 2000':        { domain: 'roblox.com',     color: '#e2231a', name: 'Roblox Plus 2000',   category: 'gaming', price: 19.99, period: 'monthly' },
+    'robux 500':          { domain: 'roblox.com',     color: '#e2231a', name: 'Roblox Plus 500',    category: 'gaming', price: 4.99, period: 'monthly' },
+    'robux 1000':         { domain: 'roblox.com',     color: '#e2231a', name: 'Roblox Plus 1000',   category: 'gaming', price: 9.99, period: 'monthly' },
+    'robux 2000':         { domain: 'roblox.com',     color: '#e2231a', name: 'Roblox Plus 2000',   category: 'gaming', price: 19.99, period: 'monthly' },
+    'roblox':             { domain: 'roblox.com',     color: '#e2231a', name: 'Roblox Plus',        category: 'gaming' },
     'apple arcade':       { domain: 'apple.com',      color: '#555555', name: 'Apple Arcade',      category: 'gaming' },
     'steam':              { domain: 'store.steampowered.com', color: '#1b2838', name: 'Steam', category: 'gaming' },
     'ea play':            { domain: 'ea.com',         color: '#000000', name: 'EA Play',            category: 'gaming' },
@@ -194,7 +290,6 @@ const CATALOG = {
     'tinkoff pro':  { domain: 'tinkoff.ru',     color: '#ffdd2d', name: 'Тинькофф Про',  category: 'other' },
     'tinkoff':      { domain: 'tinkoff.ru',     color: '#ffdd2d', name: 'Тинькофф Про',  category: 'other' },
     'apple one':    { domain: 'apple.com',      color: '#555555', name: 'Apple One',     category: 'other' },
-    'roblox':       { domain: 'roblox.com',     color: '#e2231a', name: 'Roblox',        category: 'gaming' },
 };
 
 // ========== STATE ==========
@@ -203,6 +298,10 @@ let editingId = null;
 let currentMonth = new Date().getMonth();
 let currentYear = new Date().getFullYear();
 let currentSort = 'renewal';
+let priceWasManuallyEdited = false;
+let periodWasManuallyEdited = false;
+let lastAutoPrice = null;
+let isApplyingAutoPrice = false;
 
 // ========== LOGO URL GENERATOR ==========
 // Clearbit's free logo API was shut down in Dec 2025, so we pull icons
@@ -265,14 +364,108 @@ function getSuggestions(input) {
     const lower = input.toLowerCase().trim();
     if (lower.length < 2) return [];
 
+    const seen = new Set();
     const results = [];
     for (const [key, val] of Object.entries(CATALOG)) {
         if (key.includes(lower) || lower.includes(key)) {
+            const dedupeKey = `${val.name}|${val.price ?? ''}|${val.period ?? ''}`;
+            if (seen.has(dedupeKey)) continue;
+            seen.add(dedupeKey);
             results.push({ key, ...val });
         }
     }
-    results.sort((a, b) => b.key.length - a.key.length);
-    return results.slice(0, 8);
+    results.sort((a, b) => {
+        const aExact = a.key === lower ? 1 : 0;
+        const bExact = b.key === lower ? 1 : 0;
+        if (aExact !== bExact) return bExact - aExact;
+        return b.key.length - a.key.length;
+    });
+    return results.slice(0, 10);
+}
+
+function hasCatalogPrice(match) {
+    return !!match && typeof match.price === 'number' && !Number.isNaN(match.price);
+}
+
+function formatCatalogPrice(match) {
+    if (!hasCatalogPrice(match)) return null;
+    return `$${match.price.toFixed(2)} ${getPeriodLabel(match.period || 'monthly')}`;
+}
+
+function getCategoryLabel(category) {
+    const labels = {
+        streaming: 'Стриминг', music: 'Музыка', productivity: 'Продуктивность',
+        gaming: 'Игры', cloud: 'Облако / Хостинг', design: 'Дизайн / Видео',
+        education: 'Обучение', vpn: 'VPN / Безопасность', ai: 'AI / Нейросети', other: 'Другое'
+    };
+    return labels[category] || category || 'Другое';
+}
+
+function escapeHtml(value) {
+    return String(value ?? '').replace(/[&<>"']/g, (ch) => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    }[ch]));
+}
+
+function setPriceAndPeriodFromCatalog(match, force = false) {
+    const autoPrice = document.getElementById('subAutoPrice');
+    if (!autoPrice || !autoPrice.checked || !hasCatalogPrice(match)) return;
+
+    const priceEl = document.getElementById('subPrice');
+    const periodEl = document.getElementById('subPeriod');
+    const priceIsEmpty = priceEl.value === '' || Number.isNaN(parseFloat(priceEl.value));
+    const canReplacePrice = force || priceIsEmpty || !priceWasManuallyEdited || priceEl.value === String(lastAutoPrice);
+
+    isApplyingAutoPrice = true;
+    if (canReplacePrice) {
+        priceEl.value = match.price.toFixed(2);
+        lastAutoPrice = priceEl.value;
+        priceWasManuallyEdited = false;
+    }
+    if ((force || !periodWasManuallyEdited) && match.period) {
+        periodEl.value = match.period;
+        periodWasManuallyEdited = false;
+    }
+    isApplyingAutoPrice = false;
+}
+
+function updateSubscriptionCheck(name) {
+    const check = document.getElementById('subscriptionCheck');
+    if (!check) return;
+
+    const trimmed = (name || '').trim();
+    const safeTrimmed = escapeHtml(trimmed);
+    const match = findMatch(trimmed);
+    if (!trimmed) {
+        check.className = 'subscription-check muted';
+        check.innerHTML = `
+            <div class="check-title">Тестовая проверка</div>
+            <div class="check-row"><span>Что хотите посмотреть:</span><strong>—</strong></div>
+            <div class="check-row"><span>Что за подписка:</span><strong>Введите название</strong></div>
+        `;
+        return;
+    }
+
+    if (!match) {
+        check.className = 'subscription-check warning';
+        check.innerHTML = `
+            <div class="check-title">Тестовая проверка</div>
+            <div class="check-row"><span>Что хотите посмотреть:</span><strong>${safeTrimmed}</strong></div>
+            <div class="check-row"><span>Что за подписка:</span><strong>Не найдено в каталоге</strong></div>
+            <div class="check-hint">Можно добавить вручную — иконка будет создана по первой букве.</div>
+        `;
+        return;
+    }
+
+    const priceText = formatCatalogPrice(match) || 'нет фиксированной цены / выберите тариф';
+    check.className = 'subscription-check success';
+    check.innerHTML = `
+        <div class="check-title">Тестовая проверка</div>
+        <div class="check-row"><span>Что хотите посмотреть:</span><strong>${safeTrimmed}</strong></div>
+        <div class="check-row"><span>Что за подписка:</span><strong>${escapeHtml(match.name)}</strong></div>
+        <div class="check-row"><span>Категория:</span><strong>${escapeHtml(getCategoryLabel(match.category))}</strong></div>
+        <div class="check-row"><span>Цена из каталога:</span><strong>${escapeHtml(priceText)}</strong></div>
+    `;
 }
 
 // ========== UTILITIES ==========
@@ -650,9 +843,14 @@ function editSub(id) {
     document.getElementById('subStart').value = sub.startDate;
     document.getElementById('subCategory').value = sub.category;
     document.getElementById('subReminder').checked = sub.reminder;
+    document.getElementById('subAutoPrice').checked = false;
+    priceWasManuallyEdited = true;
+    periodWasManuallyEdited = true;
+    lastAutoPrice = null;
 
     document.querySelectorAll('input[name="subColor"]').forEach(inp => { if (inp.value === sub.color) inp.checked = true; });
 
+    updateSubscriptionCheck(sub.name);
     updateIconPreview(sub.name);
     openModal();
 }
@@ -673,6 +871,11 @@ function resetForm() {
     document.getElementById('submitBtn').innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Добавить подписку`;
     document.getElementById('suggestions').classList.remove('active');
     document.getElementById('subStart').value = new Date().toISOString().split('T')[0];
+    document.getElementById('subAutoPrice').checked = true;
+    priceWasManuallyEdited = false;
+    periodWasManuallyEdited = false;
+    lastAutoPrice = null;
+    updateSubscriptionCheck('');
 
     // Reset icon preview
     document.getElementById('iconPreview').innerHTML = `<span class="icon-placeholder-letter">?</span>`;
@@ -682,6 +885,8 @@ function resetForm() {
 
 function updateIconPreview(name) {
     const match = findMatch(name);
+    updateSubscriptionCheck(name);
+    setPriceAndPeriodFromCatalog(match);
     const preview = document.getElementById('iconPreview');
     const nameEl = document.getElementById('iconPreviewName');
     const hintEl = document.getElementById('iconPreviewHint');
@@ -748,6 +953,19 @@ document.addEventListener('DOMContentLoaded', () => {
     // Name input — suggestions & icon preview
     const nameInput = document.getElementById('subName');
     const suggestionsEl = document.getElementById('suggestions');
+    const priceInput = document.getElementById('subPrice');
+    const periodInput = document.getElementById('subPeriod');
+    const autoPriceInput = document.getElementById('subAutoPrice');
+
+    priceInput.addEventListener('input', () => {
+        if (!isApplyingAutoPrice) priceWasManuallyEdited = true;
+    });
+    periodInput.addEventListener('change', () => {
+        if (!isApplyingAutoPrice) periodWasManuallyEdited = true;
+    });
+    autoPriceInput.addEventListener('change', () => {
+        if (autoPriceInput.checked) setPriceAndPeriodFromCatalog(findMatch(nameInput.value), true);
+    });
 
     nameInput.addEventListener('input', () => {
         const val = nameInput.value.trim();
@@ -757,11 +975,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const suggestions = getSuggestions(val);
             if (suggestions.length > 0) {
                 suggestionsEl.innerHTML = suggestions.map(s => `
-                    <div class="ac-item" data-name="${s.name}" data-category="${s.category}" data-color="${s.color}" data-domain="${s.domain}">
+                    <div class="ac-item" data-name="${s.name}" data-category="${s.category}" data-color="${s.color}" data-domain="${s.domain}" data-price="${s.price ?? ''}" data-period="${s.period ?? ''}">
                         <div class="ac-item-icon" style="background:${s.color}15">
                             <img src="${getLogoUrl(s.domain)}" alt="${s.name}" data-retries="0" data-color="${s.color}" onerror="onImgError(this, '${getFallbackIcon(s.name, s.color)}')">
                         </div>
-                        <div class="ac-item-name">${s.name}</div>
+                        <div class="ac-item-content">
+                            <div class="ac-item-name">${s.name}</div>
+                            <div class="ac-item-meta">${formatCatalogPrice(s) || getCategoryLabel(s.category)}</div>
+                        </div>
                     </div>
                 `).join('');
                 suggestionsEl.classList.add('active');
@@ -771,11 +992,13 @@ document.addEventListener('DOMContentLoaded', () => {
                         nameInput.value = item.dataset.name;
                         updateIconPreview(item.dataset.name);
 
-                        // Auto-fill category and color
+                        // Auto-fill category, color and (optionally) price from the catalog
                         document.getElementById('subCategory').value = item.dataset.category;
                         document.querySelectorAll('input[name="subColor"]').forEach(inp => {
                             if (inp.value === item.dataset.color) inp.checked = true;
                         });
+                        setPriceAndPeriodFromCatalog(findMatch(item.dataset.name), true);
+                        updateSubscriptionCheck(item.dataset.name);
 
                         suggestionsEl.classList.remove('active');
                     });
