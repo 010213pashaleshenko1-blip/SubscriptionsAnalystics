@@ -17,21 +17,22 @@ const { CATALOG } = sandbox;
 
 function findMatch(name) {
   const lower = name.toLowerCase().trim();
-  if (CATALOG[lower]) return CATALOG[lower];
+  if (CATALOG[lower]) return { key: lower, ...CATALOG[lower] };
 
   let bestMatch = null;
+  let bestKey = null;
   let bestScore = 0;
   for (const [key, val] of Object.entries(CATALOG)) {
     if (lower.includes(key)) {
       const score = key.length;
-      if (score > bestScore) { bestScore = score; bestMatch = val; }
+      if (score > bestScore) { bestScore = score; bestKey = key; bestMatch = val; }
     }
     if (key.includes(lower) && lower.length >= 3) {
       const score = lower.length;
-      if (score > bestScore) { bestScore = score; bestMatch = val; }
+      if (score > bestScore) { bestScore = score; bestKey = key; bestMatch = val; }
     }
   }
-  return bestMatch;
+  return bestMatch ? { key: bestKey, ...bestMatch } : null;
 }
 
 function assertMatch(input, expected) {
@@ -42,14 +43,19 @@ function assertMatch(input, expected) {
   }
 }
 
-assertMatch('Kling AI Pro', { name: 'Kling AI Pro', category: 'ai', price: 35, period: 'monthly' });
-assertMatch('PixVerse Pro', { name: 'PixVerse Pro', category: 'ai', price: 10, period: 'monthly' });
+assertMatch('Kling AI Pro', { name: 'Kling AI Pro', category: 'ai' });
+assertMatch('PixVerse Pro', { name: 'PixVerse Pro', category: 'ai' });
 assertMatch('Roblox Premium', { name: 'Roblox Plus', category: 'gaming' });
-assertMatch('Roblox Plus 500', { name: 'Roblox Plus 500', category: 'gaming', price: 4.99, period: 'monthly' });
-assertMatch('Roblox Plus 1000', { name: 'Roblox Plus 1000', category: 'gaming', price: 9.99, period: 'monthly' });
-assertMatch('Roblox Plus 2000', { name: 'Roblox Plus 2000', category: 'gaming', price: 19.99, period: 'monthly' });
+assertMatch('Roblox Plus 500', { name: 'Roblox Plus 500', category: 'gaming' });
+assertMatch('Roblox Plus 1000', { name: 'Roblox Plus 1000', category: 'gaming' });
+assertMatch('Roblox Plus 2000', { name: 'Roblox Plus 2000', category: 'gaming' });
 
-const priced = Object.values(CATALOG).filter(item => typeof item.price === 'number');
-assert.ok(priced.length >= 40, `Expected at least 40 services with catalog prices, got ${priced.length}`);
+const hardcodedPrices = Object.entries(CATALOG).filter(([, item]) => Object.prototype.hasOwnProperty.call(item, 'price'));
+assert.strictEqual(hardcodedPrices.length, 0, `Catalog must not contain default prices: ${hardcodedPrices.map(([key]) => key).join(', ')}`);
+assert.ok(source.includes('findOnlinePrice'), 'Online price lookup function is missing');
+assert.ok(source.includes('PRICE_LOOKUP_SOURCES'), 'Online price sources are missing');
+assert.ok(source.includes('https://klingai.com/pricing'), 'Kling pricing source is missing');
+assert.ok(source.includes('https://www.roblox.com/premium/membership'), 'Roblox pricing source is missing');
+assert.ok(!source.includes('price: 19.99'), 'Default 19.99 price must not be hardcoded');
 
-console.log(`✅ Catalog checks passed. Services: ${Object.keys(CATALOG).length}, priced: ${priced.length}`);
+console.log(`✅ Catalog checks passed. Services: ${Object.keys(CATALOG).length}. Prices are looked up online, not hardcoded.`);
