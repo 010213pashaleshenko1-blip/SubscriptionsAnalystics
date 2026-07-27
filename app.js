@@ -1,6 +1,6 @@
 // ========== SUBSCRIPTION CATALOG ==========
 // Each entry: { domain, color, name, category }
-// domain is used for logo.clearbit.com auto-detection
+// domain is used to fetch a favicon (Google's favicon service)
 // If no match, we use ui-avatars.com to generate a colored letter icon
 const CATALOG = {
     // Streaming
@@ -74,11 +74,39 @@ const CATALOG = {
     'openai':        { domain: 'openai.com',       color: '#10a37f', name: 'OpenAI',         category: 'ai' },
     'claude':        { domain: 'claude.ai',        color: '#d97757', name: 'Claude',         category: 'ai' },
     'claude pro':    { domain: 'claude.ai',        color: '#d97757', name: 'Claude Pro',     category: 'ai' },
+    'claude max':    { domain: 'claude.ai',        color: '#d97757', name: 'Claude Max',     category: 'ai' },
+    'gemini':        { domain: 'gemini.google.com', color: '#4285f4', name: 'Gemini',        category: 'ai' },
+    'gemini advanced': { domain: 'gemini.google.com', color: '#4285f4', name: 'Gemini Advanced', category: 'ai' },
+    'google ai pro': { domain: 'gemini.google.com', color: '#4285f4', name: 'Google AI Pro', category: 'ai' },
+    'google ai ultra': { domain: 'gemini.google.com', color: '#4285f4', name: 'Google AI Ultra', category: 'ai' },
+    'kimi':          { domain: 'kimi.com',         color: '#000000', name: 'Kimi',           category: 'ai' },
+    'kimi+':         { domain: 'kimi.com',         color: '#000000', name: 'Kimi+',          category: 'ai' },
+    'moonshot ai':   { domain: 'moonshot.ai',      color: '#000000', name: 'Moonshot AI',    category: 'ai' },
+    'deepseek':      { domain: 'deepseek.com',     color: '#4d6bfe', name: 'DeepSeek',       category: 'ai' },
+    'grok':          { domain: 'grok.com',         color: '#000000', name: 'Grok',           category: 'ai' },
+    'x premium+':    { domain: 'x.com',            color: '#000000', name: 'X Premium+',     category: 'ai' },
+    'mistral':       { domain: 'mistral.ai',       color: '#fa520f', name: 'Mistral (Le Chat)', category: 'ai' },
+    'le chat':       { domain: 'mistral.ai',       color: '#fa520f', name: 'Le Chat Pro',    category: 'ai' },
+    'qwen':          { domain: 'qwen.ai',          color: '#615ced', name: 'Qwen',           category: 'ai' },
+    'poe':           { domain: 'poe.com',          color: '#5b57d1', name: 'Poe',            category: 'ai' },
+    'character.ai':  { domain: 'character.ai',     color: '#000000', name: 'Character.AI',   category: 'ai' },
+    'character ai':  { domain: 'character.ai',     color: '#000000', name: 'Character.AI',   category: 'ai' },
+    'perplexity':    { domain: 'perplexity.ai',    color: '#20b8cd', name: 'Perplexity',     category: 'ai' },
+    'perplexity pro':{ domain: 'perplexity.ai',    color: '#20b8cd', name: 'Perplexity Pro', category: 'ai' },
     'midjourney':    { domain: 'midjourney.com',   color: '#000000', name: 'Midjourney',     category: 'ai' },
     'copilot':       { domain: 'github.com',       color: '#6e40c9', name: 'Copilot',        category: 'ai' },
     'github copilot':{ domain: 'github.com',       color: '#6e40c9', name: 'GitHub Copilot', category: 'ai' },
-    'perplexity':    { domain: 'perplexity.ai',    color: '#20b8cd', name: 'Perplexity',     category: 'ai' },
-    'perplexity pro':{ domain: 'perplexity.ai',    color: '#20b8cd', name: 'Perplexity Pro', category: 'ai' },
+    'cursor':        { domain: 'cursor.com',       color: '#000000', name: 'Cursor',         category: 'ai' },
+    'windsurf':      { domain: 'windsurf.com',     color: '#58e5c1', name: 'Windsurf',       category: 'ai' },
+    'replit':        { domain: 'replit.com',       color: '#f26207', name: 'Replit',         category: 'ai' },
+    'v0':            { domain: 'v0.app',           color: '#000000', name: 'v0',             category: 'ai' },
+    'manus':         { domain: 'manus.im',         color: '#6c5ce7', name: 'Manus',          category: 'ai' },
+    'suno':          { domain: 'suno.com',         color: '#000000', name: 'Suno',           category: 'ai' },
+    'elevenlabs':    { domain: 'elevenlabs.io',    color: '#000000', name: 'ElevenLabs',     category: 'ai' },
+    'runway':        { domain: 'runwayml.com',     color: '#000000', name: 'Runway',         category: 'ai' },
+    'leonardo ai':   { domain: 'leonardo.ai',      color: '#0d1117', name: 'Leonardo AI',    category: 'ai' },
+    'ideogram':      { domain: 'ideogram.ai',      color: '#000000', name: 'Ideogram',       category: 'ai' },
+    'notion ai':     { domain: 'notion.so',        color: '#000000', name: 'Notion AI',      category: 'ai' },
 
     // Cloud
     'icloud+':     { domain: 'icloud.com',       color: '#3693f5', name: 'iCloud+',      category: 'cloud' },
@@ -107,6 +135,9 @@ const CATALOG = {
     'roblox':             { domain: 'roblox.com',     color: '#e2231a', name: 'Roblox Premium',     category: 'gaming' },
     'apple arcade':       { domain: 'apple.com',      color: '#555555', name: 'Apple Arcade',      category: 'gaming' },
     'steam':              { domain: 'store.steampowered.com', color: '#1b2838', name: 'Steam', category: 'gaming' },
+    'ea play':            { domain: 'ea.com',         color: '#000000', name: 'EA Play',            category: 'gaming' },
+    'epic games':         { domain: 'epicgames.com',  color: '#313131', name: 'Epic Games',          category: 'gaming' },
+    'battle.net':         { domain: 'battle.net',     color: '#00aeff', name: 'Battle.net',          category: 'gaming' },
 
     // VPN / Security
     'nordvpn':      { domain: 'nordvpn.com',       color: '#4687ff', name: 'NordVPN',       category: 'vpn' },
@@ -128,6 +159,10 @@ const CATALOG = {
     'duolingo':            { domain: 'duolingo.com',         color: '#58cc02', name: 'Duolingo',            category: 'education' },
     'duolingo plus':       { domain: 'duolingo.com',         color: '#58cc02', name: 'Duolingo Plus',       category: 'education' },
     'medium':              { domain: 'medium.com',           color: '#000000', name: 'Medium',              category: 'education' },
+    'masterclass':         { domain: 'masterclass.com',      color: '#000000', name: 'MasterClass',         category: 'education' },
+    'brilliant':           { domain: 'brilliant.org',        color: '#0c8599', name: 'Brilliant',           category: 'education' },
+    'audible':             { domain: 'audible.com',          color: '#f8991c', name: 'Audible',             category: 'streaming' },
+    'kindle unlimited':    { domain: 'amazon.com',           color: '#ff9900', name: 'Kindle Unlimited',    category: 'streaming' },
 
     // Social / Messaging
     'telegram premium': { domain: 'telegram.org',    color: '#26a5e4', name: 'Telegram Premium', category: 'other' },
@@ -170,8 +205,10 @@ let currentYear = new Date().getFullYear();
 let currentSort = 'renewal';
 
 // ========== LOGO URL GENERATOR ==========
+// Clearbit's free logo API was shut down in Dec 2025, so we pull icons
+// straight from Google's favicon service instead — no key required.
 function getLogoUrl(domain) {
-    return `https://logo.clearbit.com/${domain}?size=128`;
+    return `https://www.google.com/s2/favicons?domain=${domain}&sz=128`;
 }
 
 function getFallbackIcon(name, color) {
