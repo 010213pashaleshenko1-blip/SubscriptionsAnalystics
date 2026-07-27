@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SubscriptionsAnalytics — Трекер подписок</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="app">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <span class="logo-text">SubAnalytics</span>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" data-page="dashboard">
+                    <i class="fas fa-th-large"></i>
+                    <span>Дашборд</span>
+                </a>
+                <a href="#" class="nav-item" data-page="subscriptions">
+                    <i class="fas fa-credit-card"></i>
+                    <span>Подписки</span>
+                </a>
+                <a href="#" class="nav-item" data-page="calendar">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Календарь</span>
+                </a>
+                <a href="#" class="nav-item" data-page="analytics">
+                    <i class="fas fa-chart-pie"></i>
+                    <span>Аналитика</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="sidebar-footer-info">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Данные хранятся локально</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-left">
+                    <h1 class="page-title" id="pageTitle">Дашборд</h1>
+                    <p class="page-subtitle" id="pageSubtitle">Управление вашими подписками</p>
+                </div>
+                <div class="header-right">
+                    <button class="btn btn-primary" id="addSubBtn">
+                        <i class="fas fa-plus"></i>
+                        <span>Добавить подписку</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Dashboard Page -->
+            <div class="page active" id="dashboardPage">
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                            <i class="fas fa-wallet"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-label">В месяц</span>
+                            <span class="stat-value" id="monthlyTotal">$0.00</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-label">В год</span>
+                            <span class="stat-value" id="yearlyTotal">$0.00</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                            <i class="fas fa-layer-group"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-label">Подписок</span>
+                            <span class="stat-value" id="totalSubs">0</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                            <i class="fas fa-bell"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-label">Скоро обновятся</span>
+                            <span class="stat-value" id="upcomingCount">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Upcoming Renewals -->
+                <div class="section">
+                    <div class="section-header">
+                        <h2 class="section-title"><i class="fas fa-clock"></i> Ближайшие обновления</h2>
+                    </div>
+                    <div class="upcoming-list" id="upcomingList">
+                        <div class="empty-state" id="emptyUpcoming">
+                            <i class="fas fa-inbox"></i>
+                            <p>Нет подписок</p>
+                            <span>Добавьте первую подписку, чтобы начать отслеживание</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Subs -->
+                <div class="section">
+                    <div class="section-header">
+                        <h2 class="section-title"><i class="fas fa-list"></i> Все подписки</h2>
+                    </div>
+                    <div class="subs-grid" id="subsGrid">
+                        <div class="empty-state" id="emptySubs">
+                            <i class="fas fa-credit-card"></i>
+                            <p>Список пуст</p>
+                            <span>Нажмите «Добавить подписку» чтобы начать</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Subscriptions Page -->
+            <div class="page" id="subscriptionsPage">
+                <div class="subs-grid" id="allSubsGrid">
+                    <div class="empty-state" id="emptyAllSubs">
+                        <i class="fas fa-credit-card"></i>
+                        <p>Нет подписок</p>
+                        <span>Добавьте подписку, нажав кнопку выше</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Calendar Page -->
+            <div class="page" id="calendarPage">
+                <div class="calendar-container" id="calendarContainer">
+                </div>
+            </div>
+
+            <!-- Analytics Page -->
+            <div class="page" id="analyticsPage">
+                <div class="analytics-grid">
+                    <div class="analytics-card">
+                        <h3><i class="fas fa-chart-bar"></i> Расходы по категориям</h3>
+                        <div class="chart-container" id="categoryChart"></div>
+                    </div>
+                    <div class="analytics-card">
+                        <h3><i class="fas fa-chart-pie"></i> По периодам</h3>
+                        <div class="chart-container" id="periodChart"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 id="modalTitle">Добавить подписку</h2>
+                <button class="modal-close" id="modalClose"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <form id="subForm">
+                    <input type="hidden" id="subId">
+
+                    <!-- Icon Preview -->
+                    <div class="icon-preview-container">
+                        <div class="icon-preview" id="iconPreview">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <span class="icon-preview-label" id="iconPreviewLabel">Иконка определится автоматически</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subName">Название подписки</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-tag"></i>
+                            <input type="text" id="subName" placeholder="Например: CapCut Pro" required autocomplete="off">
+                        </div>
+                        <div class="suggestions" id="suggestions"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subPrice">Стоимость ($)</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-dollar-sign"></i>
+                            <input type="number" id="subPrice" placeholder="9.99" step="0.01" min="0" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subPeriod">Период обновления</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-sync-alt"></i>
+                            <select id="subPeriod" required>
+                                <option value="weekly">Раз в неделю</option>
+                                <option value="monthly" selected>Раз в месяц</option>
+                                <option value="quarterly">Раз в 3 месяца</option>
+                                <option value="yearly">Раз в год</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subStart">Дата начала</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-calendar"></i>
+                            <input type="date" id="subStart" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subCategory">Категория</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-folder"></i>
+                            <select id="subCategory">
+                                <option value="streaming">Стриминг</option>
+                                <option value="music">Музыка</option>
+                                <option value="productivity">Продуктивность</option>
+                                <option value="gaming">Игры</option>
+                                <option value="cloud">Облако</option>
+                                <option value="design">Дизайн</option>
+                                <option value="education">Обучение</option>
+                                <option value="vpn">VPN / Безопасность</option>
+                                <option value="ai">AI / Нейросети</option>
+                                <option value="other">Другое</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subColor">Цвет</label>
+                        <div class="color-picker">
+                            <label class="color-option"><input type="radio" name="subColor" value="#667eea" checked><span style="background:#667eea"></span></label>
+                            <label class="color-option"><input type="radio" name="subColor" value="#f5576c"><span style="background:#f5576c"></span></label>
+                            <label class="color-option"><input type="radio" name="subColor" value="#43e97b"><span style="background:#43e97b"></span></label>
+                            <label class="color-option"><input type="radio" name="subColor" value="#4facfe"><span style="background:#4facfe"></span></label>
+                            <label class="color-option"><input type="radio" name="subColor" value="#fa709a"><span style="background:#fa709a"></span></label>
+                            <label class="color-option"><input type="radio" name="subColor" value="#a18cd1"><span style="background:#a18cd1"></span></label>
+                            <label class="color-option"><input type="radio" name="subColor" value="#fbc2eb"><span style="background:#fbc2eb"></span></label>
+                            <label class="color-option"><input type="radio" name="subColor" value="#fccb90"><span style="background:#fccb90"></span></label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="subReminder" checked>
+                            <span class="checkmark"></span>
+                            Напоминание за 3 дня
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-full" id="submitBtn">
+                        <i class="fas fa-plus"></i> Добавить
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
